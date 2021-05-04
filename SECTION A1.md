@@ -1,0 +1,1 @@
+1. Give examples of different integration protocols you have come across and giveexample scripts in python 3 on how to achieve each one. (10 pts)
