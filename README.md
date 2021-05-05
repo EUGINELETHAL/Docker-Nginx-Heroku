@@ -70,13 +70,6 @@ extension first. Execute the following command from the shell to connect to your
 database:
 # 
 
-Uses the Build Manifest approach for Heroku deployments.
-
-
-
-
-# Deployment  Process
-## Deploying Django to Heroku With Docker
 
 ```sh
 psql cities
@@ -86,7 +79,7 @@ Then, execute the following command to install the pg_trgm extension:
 CREATE EXTENSION pg_trgm;
 ```
 
-Let's edit your view and modify it to search for trigrams. 
+Let's edit the view and modify it to search for trigrams. 
 
 ```sh
 class SearchResultsView(ListView):
@@ -109,6 +102,8 @@ Now you have a powerful search engine built into your project. You can find more
 information about full-text search at https://docs.djangoproject.com/en/3.0/
 ref/contrib/postgres/search/ .
 
+
+
 `
 
 Stop then remove the running container once done:
@@ -119,5 +114,61 @@ $ docker rm django-heroku
 ```
 
 ### Production
+Uses the Build Manifest approach for Heroku deployments.
+
+
+
+
+# Deployment  Process
+## Deploying Django to Heroku With Docker
+
+set the Stack of your app to container:
+
+```sh
+$ heroku stack:set container -a secret-spire-12445
+```
+
+Add a heroku.yml file to the project root:
+
+```sh
+build:
+  docker:
+    web: Dockerfile
+```
+
+Here, we're just telling Heroku which Dockerfile to use for building the image.
+
+Along with build, you can also define the following stages:
+
+    setup is used to define Heroku addons and configuration variables to create during app provisioning.
+    release is used to define tasks that you'd like to execute during a release.
+    run is used to define which commands to run for the web and worker processes.
+
+
+    It's worth noting that the gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT and python manage.py collectstatic --noinput commands could be removed from the Dockerfile and added to the heroku.yml file under the run and release stages, respectively:
+
+```sh
+build:
+      docker:
+        web: Dockerfile
+    run:
+      web: gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
+    release:
+      image: web
+      command:
+        - python manage.py collectstatic --noinput
+```
+With that, initialize a Git repo and create a commit.
+
+Then, add the Heroku remote:
+
+```sh
+$heroku git:remote -a evening-tundra-50688
+```
+
+Push the code up to Heroku to build the image and run the container:
+```sh
+
+$ git push heroku master
 
 
