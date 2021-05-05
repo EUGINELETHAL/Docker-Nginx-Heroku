@@ -158,6 +158,7 @@ build:
          
 ```
 We are using Gunicorn a Python WSGI HTTP Server for production deployment
+
 With that, initialize a Git repo and create a commit.
 
 Then, create the Heroku app:
