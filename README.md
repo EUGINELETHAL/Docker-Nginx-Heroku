@@ -17,13 +17,9 @@ $ docker build -t web:latest .
 $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
 ```
 
-Verify [http://localhost:8007/ping/](http://localhost:8007/ping/) works as expected:
+Verify [http://localhost:8007/ping/](http://localhost:8007/) works as expected:
 
-```json
-{
-  "ping": "pong!"
-}
-```
+`
 
 Stop then remove the running container once done:
 
