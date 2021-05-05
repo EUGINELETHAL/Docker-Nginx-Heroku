@@ -4,7 +4,7 @@ Uses the Build Manifest approach for Heroku deployments.
 
 ## Want to learn how to build this?
 
-Check out the [post](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/).
+
 
 ## Want to use this project?
 
@@ -34,4 +34,4 @@ $ docker rm django-heroku
 
 ### Production
 
-See the blog [post](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/).
+
