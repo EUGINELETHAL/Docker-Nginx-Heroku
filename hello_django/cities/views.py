@@ -24,5 +24,5 @@ class SearchResultsView(ListView):
         object_list1= City.objects.annotate(similarity=TrigramSimilarity('name', query),).filter(similarity__gt=0.1).order_by('-similarity')
         object_list2=City.objects.annotate(similarity=TrigramSimilarity('state', query),).filter(similarity__gt=0.1).order_by('-similarity')
         object_list= object_list1|object_list2   # merge querysets
-        return object_list(similarity=TrigramSimilarity('state', query),).filter(similarity__gt=0.1).order_by('-similarity')
+        return object_list
         
