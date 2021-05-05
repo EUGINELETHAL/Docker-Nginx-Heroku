@@ -11,12 +11,7 @@ This is search app built with django, postgres
     - Configure Postgres to run on Heroku
     - Create a production Dockerfile that uses multistage Docker builds
     - Use the Heroku Container Registry and Build Manifest for deploying Docker to Heroku
-    <ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item</li>
-</ul> 
+    
     
 ```sh
 # pull official base image
