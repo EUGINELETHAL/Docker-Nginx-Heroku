@@ -145,8 +145,6 @@ Along with build, you can also define the following stages:
     run is used to define which commands to run for the web and worker processes.
 
 
-    It's worth noting that the gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT and python manage.py collectstatic --noinput commands could be removed from the Dockerfile and added to the heroku.yml file under the run and release stages, respectively:
-
 ```sh
 build:
       docker:
@@ -157,7 +155,9 @@ build:
       image: web
       command:
         - python manage.py collectstatic --noinput
+         
 ```
+We are using Gunicorn a Python WSGI HTTP Server for production deployment
 With that, initialize a Git repo and create a commit.
 
 Then, add the Heroku remote:
