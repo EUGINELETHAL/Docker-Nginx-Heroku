@@ -73,9 +73,7 @@ $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 we
 
 Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
-This project uses the trigram similarity search approach 
-Searching with trigram similarity
-Another search approach is trigram similarity. A trigram is a group of three
+This project uses the trigram similarity search approach
 consecutive characters. You can measure the similarity of two strings by counting
 the number of trigrams that they share. This approach turns out to be very effective
 for measuring the similarity of words in many languages.
