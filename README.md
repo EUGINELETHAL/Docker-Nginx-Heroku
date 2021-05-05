@@ -3,13 +3,13 @@ This is search app built with django, postgres
 
 
    Project workflow;
-    Dockerize a Django app
-    Deploy and run a Django app in a Docker container on Heroku
-    Configure GitLab CI to deploy Docker images to Heroku
-    Manage static assets with WhiteNoise
-    Configure Postgres to run on Heroku
-    Create a production Dockerfile that uses multistage Docker builds
-    Use the Heroku Container Registry and Build Manifest for deploying Docker to Heroku
+    - Dockerize a Django app
+    - Deploy and run a Django app in a Docker container on Heroku
+    - Configure GitLab CI to deploy Docker images to Heroku
+    - Manage static assets with WhiteNoise
+    - Configure Postgres to run on Heroku
+    - Create a production Dockerfile that uses multistage Docker builds
+    - Use the Heroku Container Registry and Build Manifest for deploying Docker to Heroku
 ```sh
 # pull official base image
 FROM python:3.8-alpine
