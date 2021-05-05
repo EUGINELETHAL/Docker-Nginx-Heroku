@@ -73,7 +73,7 @@ $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 we
 
 Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
-This project uses the trigram similarity search approach
+This project uses the trigram similarity search approach which is supported by Postgres
 consecutive characters. You can measure the similarity of two strings by counting
 the number of trigrams that they share. This approach turns out to be very effective
 for measuring the similarity of words in many languages.
@@ -81,7 +81,7 @@ In order to use trigrams in PostgreSQL, you will need to install the pg_trgm
 extension first. Execute the following command from the shell to connect to your
 database:
 ```sh
-psql blog
+psql cities
 ```
 Then, execute the following command to install the pg_trgm extension:
 ```
@@ -101,7 +101,7 @@ class SearchResultsView(ListView):
         object_list2=City.objects.annotate(similarity=TrigramSimilarity('state', query),).filter(similarity__gt=0.1).order_by('-similarity')
         object_list= object_list1|object_list2   # merge querysets
         return object_list
-        ```
+```
         
 Open http://127.0.0.1:8000/ in your browser and test different
 searches for trigrams. The following example displays a hypothetical typo in the
