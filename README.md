@@ -50,7 +50,14 @@ CMD gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
 ```
 
 
+### Development
 
+Run locally:
+
+```sh
+$ docker build -t web:latest .
+$ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
+```
 
 
 # 
@@ -63,14 +70,7 @@ Uses the Build Manifest approach for Heroku deployments.
 # Deployment  Process
 ## Deploying Django to Heroku With Docker
 
-### Development
 
-Run locally:
-
-```sh
-$ docker build -t web:latest .
-$ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
-```
 
 Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
