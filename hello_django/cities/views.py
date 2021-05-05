@@ -11,10 +11,9 @@ class HomePageView(ListView):
     model = City.objects.all()
     template_name = 'search_results.html'
     
-    def get_queryset(self): 
-     	object_list= City.objects.all()
-     
-        return object_list
+    def get_queryset(self):
+    	object_list= City.objects.all()
+    	return object_list
 
 class SearchResultsView(ListView):
     model = City
