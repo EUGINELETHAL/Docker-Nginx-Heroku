@@ -59,7 +59,15 @@ $ docker build -t web:latest .
 $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
 ```
 
+Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
+This project uses the trigram similarity search approach which is supported by Postgres
+consecutive characters. You can measure the similarity of two strings by counting
+the number of trigrams that they share. This approach turns out to be very effective
+for measuring the similarity of words in many languages.
+In order to use trigrams in PostgreSQL, you will need to install the pg_trgm
+extension first. Execute the following command from the shell to connect to your
+database:
 # 
 
 Uses the Build Manifest approach for Heroku deployments.
@@ -70,17 +78,6 @@ Uses the Build Manifest approach for Heroku deployments.
 # Deployment  Process
 ## Deploying Django to Heroku With Docker
 
-
-
-Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
-
-This project uses the trigram similarity search approach which is supported by Postgres
-consecutive characters. You can measure the similarity of two strings by counting
-the number of trigrams that they share. This approach turns out to be very effective
-for measuring the similarity of words in many languages.
-In order to use trigrams in PostgreSQL, you will need to install the pg_trgm
-extension first. Execute the following command from the shell to connect to your
-database:
 ```sh
 psql cities
 ```
