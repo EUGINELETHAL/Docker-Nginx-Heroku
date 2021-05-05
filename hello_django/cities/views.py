@@ -9,7 +9,6 @@ from .models import City
 class HomePageView(ListView):
     template_name = 'home.html'
     model = City.objects.all()
-    template_name = 'search_results.html'
     
     def get_queryset(self):
     	object_list= City.objects.all()
