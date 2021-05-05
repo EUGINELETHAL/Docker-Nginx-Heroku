@@ -3,16 +3,16 @@
 
 
 
-## Deployment  Process
-# Deploying Django to Heroku With Docker
+
+# 
 
 Uses the Build Manifest approach for Heroku deployments.
 
 ## Want to learn how to build this?
 
 
-
-## Want to use this project?
+# Deployment  Process
+## Deploying Django to Heroku With Docker
 
 ### Development
 
