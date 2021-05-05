@@ -1,6 +1,7 @@
 
 This is search app built with django, postgres
 
+## Want to learn how to build this?
 
    Project workflow;
    
@@ -55,7 +56,7 @@ CMD gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
 
 Uses the Build Manifest approach for Heroku deployments.
 
-## Want to learn how to build this?
+
 
 
 # Deployment  Process
@@ -70,7 +71,7 @@ $ docker build -t web:latest .
 $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
 ```
 
-Verify [http://localhost:8007/ping/](http://localhost:8007/) works as expected:
+Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
 `
 
