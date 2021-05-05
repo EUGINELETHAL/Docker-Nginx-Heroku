@@ -3,7 +3,8 @@
 <form action="{% url 'search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
-<ul>ALL Cities
+ALL Cities
+<ul>
 {% for city in object_list %}
 
 <li>{{ city.name }} {{ city.state }},</li>
