@@ -160,10 +160,10 @@ build:
 We are using Gunicorn a Python WSGI HTTP Server for production deployment
 With that, initialize a Git repo and create a commit.
 
-Then, add the Heroku remote:
+Then, create the Heroku app:
 
 ```sh
-$heroku git:remote -a evening-tundra-50688
+$heroku create
 ```
 
 Push the code up to Heroku to build the image and run the container:
