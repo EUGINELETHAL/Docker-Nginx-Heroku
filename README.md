@@ -73,6 +73,46 @@ $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 we
 
 Verify [http://localhost:8007/](http://localhost:8007/) works as expected:
 
+This project uses the trigram similarity search approach 
+Searching with trigram similarity
+Another search approach is trigram similarity. A trigram is a group of three
+consecutive characters. You can measure the similarity of two strings by counting
+the number of trigrams that they share. This approach turns out to be very effective
+for measuring the similarity of words in many languages.
+In order to use trigrams in PostgreSQL, you will need to install the pg_trgm
+extension first. Execute the following command from the shell to connect to your
+database:
+```sh
+psql blog
+```
+Then, execute the following command to install the pg_trgm extension:
+```
+CREATE EXTENSION pg_trgm;
+```
+
+Let's edit your view and modify it to search for trigrams. 
+
+```sh
+class SearchResultsView(ListView):
+    model = City
+    template_name = 'search_results.html'
+    
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        object_list1= City.objects.annotate(similarity=TrigramSimilarity('name', query),).filter(similarity__gt=0.1).order_by('-similarity')
+        object_list2=City.objects.annotate(similarity=TrigramSimilarity('state', query),).filter(similarity__gt=0.1).order_by('-similarity')
+        object_list= object_list1|object_list2   # merge querysets
+        return object_list
+        ```
+        
+Open http://127.0.0.1:8000/ in your browser and test different
+searches for trigrams. The following example displays a hypothetical typo in the
+django term which exists in my database, showing search results for yango :
+ Search results for the term "yango"
+Now you have a powerful search engine built into your project. You can find more
+information about full-text search at https://docs.djangoproject.com/en/3.0/
+ref/contrib/postgres/search/ .
+
 `
 
 Stop then remove the running container once done:
