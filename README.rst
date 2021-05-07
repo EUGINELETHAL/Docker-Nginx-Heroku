@@ -100,7 +100,6 @@ Next, we copy our application code to the image, set some default environment va
 A few notes about other aspects of this Dockerfile:
 
  I've added ``UWSGI_LAZY_APPS=1`` and ``UWSGI_WSGI_ENV_BEHAVIOR=holy`` to the uWSGI configuration to provide a more stable uWSGI experience.
-* The ``UWSGI_HTTP_AUTO_CHUNKED`` and ``UWSGI_HTTP_KEEPALIVE`` options to uWSGI are needed in the event the container will be hosted behind an Amazon Elastic Load Balancer (ELB), because Django doesn't set a valid ``Content-Length`` header by default, unless the ``ConditionalGetMiddleware`` is enabled. See `the note <http://uwsgi-docs.readthedocs.io/en/latest/HTTP.html#can-i-use-uwsgi-s-http-capabilities-in-production>`_ at the end of the uWSGI documentation on HTTP support for further detail.
 
 
 Requirements and Settings Files
@@ -113,7 +112,6 @@ Production-ready requirements and settings files are outside the scope of this p
     dj-database-url>=0.5,<0.6
     psycopg2>=2.8,<2.9
 
-I didn't pin these to specific versions here to help future-proof this post somewhat, but you'll likely want to pin these (and other) requirements to specific versions so things don't suddenly start breaking in production. Of course, you don't have to use any of these packages, but you'll need to adjust the corresponding code elsewhere in this post if you don't.
 
 My ``deploy.py`` settings file looks like this:
 
@@ -259,6 +257,8 @@ Next, let's add Nginx into the mix to act as a reverse proxy for Gunicorn to han
 
 Add the service to docker-compose.prod.yml:
 
+.. code-block:: docker
+
 nginx:
   build: ./nginx
   ports:
@@ -269,13 +269,15 @@ nginx:
 Then, in the local project root, create the following files and folders:
 
     
-```sh
+.. code-block:: docker
+
 └── nginx
     ├── Dockerfile
     └── nginx.conf
     
-```
 Dockerfile:
+
+.. code-block:: docker
 
 FROM nginx:1.19.0-alpine
 
