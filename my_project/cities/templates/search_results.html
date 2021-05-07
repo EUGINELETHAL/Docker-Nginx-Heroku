@@ -1,0 +1,13 @@
+<h1>Search Results</h1>
+{% if object_list %}
+<ul>
+  {% for city in object_list %}
+    <li>
+      {{ city.name }} {{ city.state }},
+    </li>
+  {% endfor %}
+</ul>
+   {% else %}
+    <li>
+    <h1>OOps O search results</h1>
+    {% endif %}
